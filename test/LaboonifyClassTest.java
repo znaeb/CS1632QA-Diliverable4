@@ -145,8 +145,9 @@ public class LaboonifyClassTest {
         //test arrays
         for (int i=0;i<testHolder.length;i++){
             int expResult=0;
+            int labooned[]=(instance.Laboonify(testHolder[i]));
             for (int j=0;j<(testHolder[i].length);j++){
-                expResult=expResult+(instance.Laboonify(testHolder[i])[j]);
+                expResult=expResult+labooned[j];
                 
             }
             int result = (instance.Laboonify(testHolder[i]))[(testHolder[i].length)];
