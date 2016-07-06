@@ -43,7 +43,8 @@ public class LaboonifyClassTest {
      */
     @Test
     public void testLaboonifySize() {
-        System.out.println("Laboonify");
+        System.out.println("LaboonifySize");
+        //generate arrays
         int[][] testHolder=new int[100][];
         for(int i=0;i<testHolder.length;i++){
             Random rand=new Random();
@@ -54,7 +55,7 @@ public class LaboonifyClassTest {
             }
             testHolder[i]=holderArray;
         }
-        //int[] x = null;
+        //test arrays
         LaboonifyClass instance = new LaboonifyClass();
         for (int i=0;i<testHolder.length;i++){
             int expResult = (testHolder[i].length)+1;
@@ -68,7 +69,8 @@ public class LaboonifyClassTest {
      */
     @Test
     public void testLaboonifySquare() {
-        System.out.println("Laboonify");
+        System.out.println("LaboonifySquare");
+        //generate arrays
         int[][] testHolder=new int[100][];
         for(int i=0;i<testHolder.length;i++){
             Random rand=new Random();
@@ -79,7 +81,7 @@ public class LaboonifyClassTest {
             }
             testHolder[i]=holderArray;
         }
-        //int[] x = null;
+        //test arrary
         LaboonifyClass instance = new LaboonifyClass();
         for (int i=0;i<testHolder.length;i++){
             for (int j=0;j<testHolder[i].length;j++){
@@ -89,7 +91,68 @@ public class LaboonifyClassTest {
             }
         }
     }
-    
+    /**
+     * Test of Laboonify method, of class LaboonifyClass.
+     * tests whether the laboonified array's last number is the sum of all the
+     * squared numbers in the new array
+     */
+    @Test
+    public void testLaboonifySquareSum() {
+        System.out.println("LaboonifySquareSum");
+        //generate arrays
+        int[][] testHolder=new int[100][];
+        for(int i=0;i<testHolder.length;i++){
+            Random rand=new Random();
+            int arraySize=rand.nextInt(100)+1;
+            int[] holderArray=new int[arraySize];
+            for(int j=0;j<arraySize;j++){
+                holderArray[j]=(rand.nextInt(100)+1);
+            }
+            testHolder[i]=holderArray;
+        }
+        LaboonifyClass instance = new LaboonifyClass();
+        //test arrays
+        for (int i=0;i<testHolder.length;i++){
+            int expResult=0;
+            for (int j=0;j<(testHolder[i].length);j++){
+                expResult=expResult+(((testHolder[i])[j])*((testHolder[i])[j]));
+                
+            }
+            int result = (instance.Laboonify(testHolder[i]))[(testHolder[i].length)];
+            assertEquals(expResult, result);
+        }
+    }
+    /**
+     * Test of Laboonify method, of class LaboonifyClass.
+     * tests whether the laboonified array's last number is the sum of all the
+     * previous numbers in the new array
+     */
+    @Test
+    public void testLaboonifySum() {
+        System.out.println("LaboonifySum");
+        //generate arrays
+        int[][] testHolder=new int[100][];
+        for(int i=0;i<testHolder.length;i++){
+            Random rand=new Random();
+            int arraySize=rand.nextInt(100)+1;
+            int[] holderArray=new int[arraySize];
+            for(int j=0;j<arraySize;j++){
+                holderArray[j]=(rand.nextInt(100)+1);
+            }
+            testHolder[i]=holderArray;
+        }
+        LaboonifyClass instance = new LaboonifyClass();
+        //test arrays
+        for (int i=0;i<testHolder.length;i++){
+            int expResult=0;
+            for (int j=0;j<(testHolder[i].length);j++){
+                expResult=expResult+(instance.Laboonify(testHolder[i])[j]);
+                
+            }
+            int result = (instance.Laboonify(testHolder[i]))[(testHolder[i].length)];
+            assertEquals(expResult, result);
+        }
+    }
     
     /*
     @Property(trials = 100)
